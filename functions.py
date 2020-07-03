@@ -117,16 +117,16 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
     plt.streamplot(X, Y, -v, u, density=1, linewidth=1, arrowsize=1, arrowstyle='-', color="gray") 
   if presion:
     cp = 1.0 - (u**2 + v**2) / 1**2
-    contf = plt.contourf(X, Y, cp, levels=np.linspace(-2, 2, 100), extend='both')
+    contf = plt.contourf(X, Y, cp, levels=np.linspace(-2.0, 1.0, 100), extend='both')
     cbar = plt.colorbar(contf)
-    cbar.set_label('C_p', fontsize=16)
-    cbar.set_ticks([-2, -2, -2, 2])
+    cbar.set_label('$C_p', fontsize=16)
+    cbar.set_ticks([-2.0, -1.0, 0.0, 1.0])
 
   scats = []
 
 
-  xline = [random()*4 - 2 for _ in range(200)]
-  yline = [random()*4 - 2 for _ in range(200)]
+  xline = [random()*4 - 2 for _ in range(100)]
+  yline = [random()*4 - 2 for _ in range(100)]
 
   # animation function.  This is called sequentially
   def animate(i):
