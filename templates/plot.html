@@ -19,7 +19,7 @@
           <div class="col-4">
             
             <div class="form-check">
-                <input name="confirm_0" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <input name="confirm_0" class="form-check-input" type="checkbox" value="{{ confirms[0] }}" id="defaultCheck1">
                 <label class="form-check-label" for="defaultCheck1">
                     <h6>Flujo uniforme en X</h6>
                 </label>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="form-check">
-                <input name="confirm_1" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <input name="confirm_1" class="form-check-input" type="checkbox" value="{{ confirms[1] }}" id="defaultCheck2">
                 <label class="form-check-label" for="defaultCheck1">
                     <h6>Flujo uniforme en Y</h6>
                 </label>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="form-check">
-                <input name="confirm_2" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <input name="confirm_2" class="form-check-input" type="checkbox" value="{{ confirms[2] }}" id="defaultCheck3">
                 <label class="form-check-label" for="defaultCheck1">
                     <h6>Flujo uniforme en alpha</h6>
                 </label>
@@ -67,7 +67,7 @@
               </div>
 
             <div class="form-check">
-                <input name="confirm_3" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <input name="confirm_3" class="form-check-input" type="checkbox" value="{{ confirms[3] }}" id="defaultCheck4">
                 <label class="form-check-label" for="defaultCheck1">
                     <h6>Flujo de una fuente</h6>
                 </label>
@@ -92,7 +92,7 @@
             </div>
 
             <div class="form-check">
-                <input name="confirm_4" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <input name="confirm_4" class="form-check-input" type="checkbox" value="{{ confirms[4] }}" id="defaultCheck5">
                 <label class="form-check-label" for="defaultCheck1">
                     <h6>Flujo uniforme de un sumidero</h6>
                 </label>
@@ -117,7 +117,7 @@
             </div>
 
             <div class="form-check">
-                <input name="confirm_5" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <input name="confirm_5" class="form-check-input" type="checkbox" value="{{ confirms[5] }}" id="defaultCheck6">
                 <label class="form-check-label" for="defaultCheck1">
                     <h6>Flujo de un vórtice irrotacional</h6>
                 </label>
@@ -150,7 +150,7 @@
                 <div id="hide" class="row justify-content-center display-none"> 
                     <div class="col-3">
                         <div class="form-check">
-                            <input name="corriente" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <input name="corriente" class="form-check-input" type="checkbox" value="{{ plot[0] }}" id="defaultCheck7">
                             <label class="form-check-label" for="defaultCheck1">
                                 <h6>Líneas de corriente</h6>
                             </label>
@@ -158,7 +158,7 @@
                     </div> 
                     <div class="col-3">
                         <div class="form-check">
-                            <input name="potencia" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <input name="potencia" class="form-check-input" type="checkbox" value="{{ plot[1] }}" id="defaultCheck8">
                             <label class="form-check-label" for="defaultCheck1">
                                 <h6>Líneas de potencia</h6>
                             </label>
@@ -166,17 +166,17 @@
                     </div> 
                     <div class="col-3">
                         <div class="form-check">
-                            <input name="presion" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <input name="presion" class="form-check-input" type="checkbox" value="{{ plot[2] }}" id="defaultCheck9">
                             <label class="form-check-label" for="defaultCheck1">
                                 <h6>Coeficiente de presión</h6>
                             </label>
-                        </div>
+                        </div>  
                     </div> 
                 </div>
                 <br>
                 <div id="hide2" class="display-none" style="text-align: center;">
                     <div class="form-check">
-                        <input name="puntos" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <input name="puntos" class="form-check-input" type="checkbox" value="{{ plot[3] }}" id="defaultCheck10">
                         <label class="form-check-label" for="defaultCheck1">
                             <h6>Animación de puntos</h6>
                         </label>

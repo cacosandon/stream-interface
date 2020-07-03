@@ -13,5 +13,12 @@ $(document).ready(function(){
         $("#hide").fadeIn().css("display", "flex");  
         $("#submit").fadeIn(); 
         $("#hide2").fadeIn(); 
+
+        $('input[id^="defaultCheck"]').each(function(i, check) {
+            if($(this).val() === "1"){
+                $(this).prop("checked", true);
+            }
+        });
+
     });
   });
