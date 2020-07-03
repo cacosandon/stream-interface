@@ -127,8 +127,8 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
   scats = []
 
 
-  xline = [random()*20 - 10 for _ in range(100)]
-  yline = [random()*20 - 10 for i in range(100)]
+  xline = [random()*20 - 10 for _ in range(200)]
+  yline = [random()*20 - 10 for i in range(200)]
 
   # animation function.  This is called sequentially
   def animate(i):
