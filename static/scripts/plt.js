@@ -1,13 +1,15 @@
 $(document).ready(function(){
-    $("#upload").click(function(){
-        $("#loading-excel").fadeIn(); 
-        $("#loading-address").fadeIn(); 
-        $("#content").fadeOut();   
+    $("#submit").click(function(){
+        $("#loading").fadeIn(); 
+        $("#image").fadeOut();   
+        $("#hide").fadeOut(); 
+        $("#submit").fadeOut(); 
     });
 
     $(window).on("load", function () {
-        $("#loading-excel").fadeOut(); 
-        $("#loading-address").fadeOut(); 
-        $("#content").fadeIn();  
+        $("#loading").fadeOut(); 
+        $("#image").fadeIn().css("display", "flex");  
+        $("#hide").fadeIn().css("display", "flex");  
+        $("#submit").fadeIn(); 
     });
   });

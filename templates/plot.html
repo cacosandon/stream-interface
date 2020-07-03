@@ -138,11 +138,11 @@
             
           </div>
           
-          
 
           <div class="col-6 fixed-height">
-                <img class="fixed-height" src="{{ image }}"/> 
-                <div class="row justify-content-center"> 
+                <div id="loading"></div>
+                <img id="image" class="fixed-height display-none" src="{{ image }}"/> 
+                <div id="hide" class="row justify-content-center display-none"> 
                     <div class="col-3">
                         <div class="form-check">
                             <input name="corriente" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -171,7 +171,7 @@
                 <br>
                 <div class="col-12">
                     <div class="button-container">
-                        <button type="submit" class="btn btn-primary btn-dark btn-lg">Plot</button>
+                        <button id="submit" type="submit" class="btn btn-primary btn-dark btn-lg display-none">Plot</button>
                     </div>    
                 </div>  
 

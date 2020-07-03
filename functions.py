@@ -118,7 +118,7 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
   if potencia:
     plt.streamplot(X, Y, -v, u, density=1, linewidth=1, arrowsize=1, arrowstyle='-', color="gray") 
   if presion:
-    cp = 1.0 - (u**2 + v**2) / 1**2
+    cp = 1.0 - (u**2 + v**2) / 3**2
     contf = plt.contourf(X, Y, cp, levels=np.linspace(-20, 20, 100), extend='both')
     cbar = plt.colorbar(contf)
     cbar.set_label('C_p', fontsize=16)
@@ -158,7 +158,7 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
       
       return scat,
 
-  anim = animation.FuncAnimation(fig, animate, frames=20, interval=1, repeat=True)
+  anim = animation.FuncAnimation(fig, animate, frames=30, interval=10, repeat=True)
   anim.save('static/img/line.gif', writer='imagemagick')
   
   return fig
