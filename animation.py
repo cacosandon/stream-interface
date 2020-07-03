@@ -19,10 +19,10 @@ def graph(params, what, potencia, corriente, presion):
     M_source, x_source, y_source = params[3]
     gamma, xv, yv = params[5]
 
-    N = 200 # número de puntos en cada dirección
+    N = 60 # número de puntos en cada dirección
 
-    x_start, x_end = -20, 20 # límites en dirección x
-    y_start, y_end = -20, 20 # límite en dirección y
+    x_start, x_end = -2, 2 # límites en dirección x
+    y_start, y_end = -2, 2 # límite en dirección y
 
     x = np.linspace(x_start, x_end, N) # crea arreglo de 1D con coord X
     y = np.linspace(y_start, y_end, N) # crea arreglo de 1D con coord Y

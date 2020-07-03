@@ -4,10 +4,10 @@ import matplotlib.animation as animation
 from random import random
 plt.style.use('seaborn-pastel')
 
-N = 200 # número de puntos en cada dirección
+N = 60 # número de puntos en cada dirección
 
-x_start, x_end = -10.0, 10.0 # límites en dirección x
-y_start, y_end = -10.0, 10.0 # límite en dirección y
+x_start, x_end = -2.0, 2.0 # límites en dirección x
+y_start, y_end = -2.0, 2.0 # límite en dirección y
 
 x = np.linspace(x_start, x_end, N) # crea arreglo de 1D con coord X
 y = np.linspace(y_start, y_end, N) # crea arreglo de 1D con coord Y
@@ -108,25 +108,25 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
   #Graficamos
   
   fig, ax = plt.subplots()
-  plt.xlim(-10, 10)
-  plt.ylim(-10, 10)
+  plt.xlim(-2, 2)
+  plt.ylim(-2, 2)
 
   if corriente:
     plt.streamplot(X, Y, u, v, density=1, linewidth=1, arrowsize=1, arrowstyle='->', color="brown") 
   if potencia:
     plt.streamplot(X, Y, -v, u, density=1, linewidth=1, arrowsize=1, arrowstyle='-', color="gray") 
   if presion:
-    cp = 1.0 - (u**2 + v**2) / 3**2
-    contf = plt.contourf(X, Y, cp, levels=np.linspace(-20, 20, 100), extend='both')
+    cp = 1.0 - (u**2 + v**2) / 1**2
+    contf = plt.contourf(X, Y, cp, levels=np.linspace(-2, 2, 100), extend='both')
     cbar = plt.colorbar(contf)
     cbar.set_label('C_p', fontsize=16)
-    cbar.set_ticks([-20, -20, -20, 20])
+    cbar.set_ticks([-2, -2, -2, 2])
 
   scats = []
 
 
-  xline = [random()*20 - 10 for _ in range(200)]
-  yline = [random()*20 - 10 for i in range(200)]
+  xline = [random()*4 - 2 for _ in range(200)]
+  yline = [random()*4 - 2 for _ in range(200)]
 
   # animation function.  This is called sequentially
   def animate(i):
@@ -137,12 +137,12 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
       delx = []
       dely = []
       for i in range(len(xline)):
-        if not 0 <= round((xline[i] + 20) * 5) < 198 or not 0 <= round((yline[i] + 20) * 5) < 198:
+        if not 0 <= round((xline[i] + 2) * 15) < 59 or not 0 <= round((yline[i] + 2) * 15) < 59:
           delx.append(xline[i])
           dely.append(yline[i])
         else:
-          x_index_in_velocity = int((xline[i] + 20) * 5)
-          y_index_in_velocity = int((yline[i] + 20) * 5)
+          x_index_in_velocity = int((xline[i] + 2) * 15)
+          y_index_in_velocity = int((yline[i] + 2) * 15)
 
 
           vel_x = u[y_index_in_velocity][x_index_in_velocity]
@@ -156,7 +156,7 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
       
       return scat,
 
-  anim = animation.FuncAnimation(fig, animate, frames=30, interval=10, repeat=True)
+  anim = animation.FuncAnimation(fig, animate, frames=15, interval=100, repeat=True)
   anim.save('static/img/line.gif', writer='imagemagick')
   
   return fig
