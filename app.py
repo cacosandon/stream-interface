@@ -33,8 +33,9 @@ def plot():
         potencia = not request.form.get("potencia", True) 
         corriente = not request.form.get("corriente", True) 
         presion = not request.form.get("presion", True) 
+        puntos = not request.form.get("puntos", True) 
 
-        graph(params, confirms, potencia, corriente, presion)
+        graph(params, confirms, potencia, corriente, presion, puntos)
 
         return render_template("plot.html", image=url_for('static', filename="img/line.gif"), params=params)
 

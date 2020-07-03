@@ -3,7 +3,7 @@ from functions import velocity_SourceSink, velocity_uniformDiag, velocity_unifor
 from functions import stream_SourceSink, stream_uniformDiag, stream_uniformX, stream_uniformY, stream_Vortex
 import numpy as np
 
-def graph(params, what, potencia, corriente, presion):
+def graph(params, what, potencia, corriente, presion, puntos):
     """
         [(U), (U), (U, alpha), (M, x, y), (M, x, y), (gamma, x, y)], [Boolean, Boolean, Boolean, Boolean, Boolean, Boolean]
     """
@@ -71,7 +71,7 @@ def graph(params, what, potencia, corriente, presion):
             new_psilist.append(psi_list[i])
 
 
-    return superposicion(new_ulist, new_vlist, new_psilist, potencia, corriente, presion)
+    return superposicion(new_ulist, new_vlist, new_psilist, potencia, corriente, presion, puntos)
 
 
 

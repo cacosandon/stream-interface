@@ -3,6 +3,7 @@ $(document).ready(function(){
         $("#loading").fadeIn(); 
         $("#image").fadeOut();   
         $("#hide").fadeOut(); 
+        $("#hide2").fadeOut();
         $("#submit").fadeOut(); 
     });
 
@@ -11,5 +12,6 @@ $(document).ready(function(){
         $("#image").fadeIn().css("display", "flex");  
         $("#hide").fadeIn().css("display", "flex");  
         $("#submit").fadeIn(); 
+        $("#hide2").fadeIn(); 
     });
   });

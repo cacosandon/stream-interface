@@ -92,7 +92,7 @@ def pressure_Vortex(gamma, xv, yv, inf): # REVISAR REVISAR REVISAR
     return 1.0 - (u**2 + v**2) / inf**2
 
 
-def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
+def superposicion(u_list, v_list, psi_list, potencia, corriente, presion, puntos):
 
   #Superposición
   u = np.zeros((N, N))
@@ -124,7 +124,6 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
 
   scats = []
 
-
   xline = [random()*4 - 2 for _ in range(100)]
   yline = [random()*4 - 2 for _ in range(100)]
 
@@ -151,12 +150,18 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
           xline[i] += vel_x/30
           yline[i] += vel_y/30
 
-      scat = plt.scatter([x for x in xline if not x in delx], [y for y in yline if not y in dely], color="orange", s=8)
-      scats.append(scat)
+      if puntos:
+        scat = plt.scatter([x for x in xline if not x in delx], [y for y in yline if not y in dely], color="orange", s=8)
+        scats.append(scat)
       
-      return scat,
+        return scat,
+      else:
+        return
 
-  anim = animation.FuncAnimation(fig, animate, frames=15, interval=100, repeat=True)
+  if puntos:
+    anim = animation.FuncAnimation(fig, animate, frames=15, interval=80, repeat=True)
+  else:
+    anim = animation.FuncAnimation(fig, animate, frames=1, interval=1, repeat=True)
   anim.save('static/img/line.gif', writer='imagemagick')
   
   return fig
