@@ -9,6 +9,8 @@ body {
 
 img {
     margin: 0;
+    width: 100%;
+    height: auto;
 }
 
 .fixed-height {

@@ -108,8 +108,6 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion):
   #Graficamos
   
   fig, ax = plt.subplots()
-  plt.xlabel('x', fontsize=16)
-  plt.ylabel('y', fontsize=16)
   plt.xlim(-10, 10)
   plt.ylim(-10, 10)
 
