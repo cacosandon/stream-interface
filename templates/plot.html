@@ -1,0 +1,187 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/plt.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+
+<body>
+    <div class="big-container">
+        <form method="POST" action="/">
+        <div class="row justify-content-center">
+          <div class="col-4">
+            
+            <div class="form-check">
+                <input name="confirm_0" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    <h6>Flujo uniforme en X</h6>
+                </label>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Velocidad</span>
+                </div>
+                <input name="param11" type="number" step="0.01" class="form-control" aria-label="Small" value="{{ params[0][0] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+
+            <div class="form-check">
+                <input name="confirm_1" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    <h6>Flujo uniforme en Y</h6>
+                </label>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Velocidad</span>
+                </div>
+                <input name="param21" type="number" step="0.01" class="form-control" aria-label="Small" value="{{ params[1][0] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+
+            <div class="form-check">
+                <input name="confirm_2" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    <h6>Flujo uniforme en alpha</h6>
+                </label>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Velocidad</span>
+                </div>
+                <input name="param31" type="number" step="0.01" class="form-control" aria-label="Small" value="{{ params[2][0] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Alpha</span>
+                </div>
+                <input name="param32" type="number" step="0.01" class="form-control" aria-label="Small" value="{{ params[2][1] }}" aria-describedby="inputGroup-sizing-sm">
+                <div class="input-group-append">
+                  <span class="input-group-text">π</span>
+                </div>
+              </div>
+
+            <div class="form-check">
+                <input name="confirm_3" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    <h6>Flujo de una fuente</h6>
+                </label>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Intensidad</span>
+                </div>
+                <input name="param41" type="number" step="0.01" class="form-control" aria-label="Small" value="{{ params[3][0] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">X0</span>
+                </div>
+                <input name="param42" type="number" class="form-control" aria-label="Small" value="{{ params[3][1] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Y0</span>
+                </div>
+                <input name="param43" type="number" class="form-control" aria-label="Small" value="{{ params[3][2] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+
+            <div class="form-check">
+                <input name="confirm_4" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    <h6>Flujo uniforme de un sumidero</h6>
+                </label>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Intensidad</span>
+                </div>
+                <input name="param51" type="number" step="0.01" class="form-control" aria-label="Small" value="{{ params[4][0] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">X0</span>
+                </div>
+                <input name="param52" type="number"  class="form-control" aria-label="Small" value="{{ params[4][1] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Y0</span>
+                </div>
+                <input name="param53" type="number" class="form-control" aria-label="Small" value="{{ params[4][2] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+
+            <div class="form-check">
+                <input name="confirm_5" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    <h6>Flujo de un vórtice irrotacional</h6>
+                </label>
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Intensidad</span>
+                </div>
+                <input name="param61" type="number" step="0.01" class="form-control" aria-label="Small" value="{{ params[5][0] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">X0</span>
+                </div>
+                <input name="param62" type="number" class="form-control" aria-label="Small" value="{{ params[5][1] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Y0</span>
+                </div>
+                <input name="param63" type="number"  class="form-control" aria-label="Small" value="{{ params[5][2] }}" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+          </div>
+          
+          
+
+          <div class="col-6 fixed-height">
+                <img class="fixed-height" src="{{ image }}"/> 
+                <div class="row justify-content-center"> 
+                    <div class="col-3">
+                        <div class="form-check">
+                            <input name="corriente" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <h6>Líneas de corriente</h6>
+                            </label>
+                        </div>
+                    </div> 
+                    <div class="col-3">
+                        <div class="form-check">
+                            <input name="potencia" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <h6>Líneas de potencia</h6>
+                            </label>
+                        </div>
+                    </div> 
+                    <div class="col-3">
+                        <div class="form-check">
+                            <input name="presion" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <h6>Coeficiente de presión</h6>
+                            </label>
+                        </div>
+                    </div> 
+                </div>
+                <br>
+                <div class="col-12">
+                    <div class="button-container">
+                        <button type="submit" class="btn btn-primary btn-dark btn-lg">Plot</button>
+                    </div>    
+                </div>  
+
+          </div>
+        </div>
+    </form>
+    </div>
+    
+
+</body>
+
+
+</html>

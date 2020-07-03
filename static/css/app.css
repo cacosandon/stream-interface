@@ -1,0 +1,17 @@
+body {
+    padding: 2%;
+}
+
+.button-container {
+    text-align: center;
+    padding: 0px;
+}
+
+img {
+    margin: 0;
+}
+
+.fixed-height {
+    padding: 0px;
+}
+
