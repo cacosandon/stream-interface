@@ -2,6 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import matplotlib.animation as animation
 from random import random
+from math import sqrt
 plt.style.use('seaborn-pastel')
 
 N = 60 # número de puntos en cada dirección
@@ -24,6 +25,9 @@ def stream_uniformX(U, x, y):
 def velocity_uniformX(U):
   return (U * np.ones((N, N), dtype=float), 0 * np.ones((N, N), dtype=float))
 
+def vel_inf_X(U):
+  return U
+
 def pressure_uniformX(U):
     u, v = velocity_uniformX(U)
     return 1.0 - (u**2 + v**2) / U**2
@@ -39,6 +43,9 @@ def stream_uniformY(U, x, y):
 
 def velocity_uniformY(U):
   return (0 * np.ones((N, N), dtype=float), U * np.ones((N, N), dtype=float))
+
+def vel_inf_Y(U):
+  return U
 
 def pressure_uniformY(U):
     u, v = velocity_uniformY(U)
@@ -56,6 +63,9 @@ def stream_uniformDiag(U, alfa, x, y):
 def velocity_uniformDiag(U, alfa):
   return (U * np.cos(alfa) * np.ones( (N, N), dtype=float ), U * np.sin(alfa) * np.ones( (N, N), dtype=float ))
 
+def vel_inf_A(U):
+  return U
+
 def pressure_uniformDiag(U, alfa):
     u, v = velocity_uniformDiag(U, alfa)
     return 1.0 - (u**2 + v**2) / U**2
@@ -70,6 +80,9 @@ def stream_SourceSink(M, xs, ys):
 
 def velocity_SourceSink(M, xs, ys):
   return (M  * (X-xs) / ((X-xs)**2 + (Y-ys)**2), M * (Y-ys) / ((X-xs)**2 + (Y-ys)**2))
+
+def vel_inf_SS(M, xs, ys):
+  return sqrt((M  * (100-xs) / ((100-xs)**2 + (100-ys)**2))**2 + (M * (100-ys) / ((100-xs)**2 + (100-ys)**2))**2)
 
 def pressure_SourceSink(M, xs, ys, inf):
     u, v = velocity_SourceSink(M, xs, ys)
@@ -87,12 +100,15 @@ def stream_Vortex(gamma, xv, yv):
 def velocity_Vortex(gamma, xv, yv):
   return (2*gamma * (Y-yv) / ((X-xv)**2 + (Y-yv)**2), -2*gamma * (X-xv) / ((X-xv)**2 + (Y-yv)**2))
 
+def vel_inf_V(gamma, xv, yv):
+  return sqrt((2*gamma * (100-yv) / ((100-xv)**2 + (100-yv)**2))**2 +  (-2*gamma * (100-xv) / ((100-xv)**2 + (100-yv)**2))**2)
+
 def pressure_Vortex(gamma, xv, yv, inf): # REVISAR REVISAR REVISAR
     u, v = velocity_Vortex(gamma, xv, yv)
     return 1.0 - (u**2 + v**2) / inf**2
 
 
-def superposicion(u_list, v_list, psi_list, potencia, corriente, presion, puntos):
+def superposicion(u_list, v_list, psi_list, new_inf, potencia, corriente, presion, puntos):
 
   #Superposición
   u = np.zeros((N, N))
@@ -116,10 +132,10 @@ def superposicion(u_list, v_list, psi_list, potencia, corriente, presion, puntos
   if potencia:
     plt.streamplot(X, Y, -v, u, density=1, linewidth=1, arrowsize=1, arrowstyle='-', color="gray") 
   if presion:
-    cp = 1.0 - (u**2 + v**2) / 1**2
+    cp = 1.0 - (u**2 + v**2) / new_inf**2
     contf = plt.contourf(X, Y, cp, levels=np.linspace(-2.0, 1.0, 100), extend='both')
     cbar = plt.colorbar(contf)
-    cbar.set_label('$C_p', fontsize=16)
+    cbar.set_label('Coef. de presión', fontsize=16)
     cbar.set_ticks([-2.0, -1.0, 0.0, 1.0])
 
   scats = []
