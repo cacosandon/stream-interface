@@ -132,11 +132,17 @@ def superposicion(u_list, v_list, psi_list, new_inf, potencia, corriente, presio
   if potencia:
     plt.streamplot(X, Y, -v, u, density=1, linewidth=1, arrowsize=1, arrowstyle='-', color="gray") 
   if presion:
-    cp = 1.0 - (u**2 + v**2) / new_inf**2
-    contf = plt.contourf(X, Y, cp, levels=np.linspace(-2.0, 1.0, 100), extend='both')
+    U = new_inf * np.ones((N, N)) # La velocidad en el infinito en matriz
+    V = np.sqrt((u**2 + v**2))
+
+    g = 9.81
+    rho = 1
+    cp = (U**2/(2*g) - V**2/(2*g)) * (rho * g)
+
+    contf = plt.contourf(X, Y, cp, levels=np.linspace(-2.0, 2.0, 100), extend='both')
     cbar = plt.colorbar(contf)
-    cbar.set_label('Coef. de presión', fontsize=16)
-    cbar.set_ticks([-2.0, -1.0, 0.0, 1.0])
+    cbar.set_label('Presión', fontsize=16)
+    cbar.set_ticks([-2.0, -1.0, 0.0, 1.0, 2.0])
 
   scats = []
 
