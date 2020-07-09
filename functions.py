@@ -7,8 +7,8 @@ plt.style.use('seaborn-pastel')
 
 N = 60 # número de puntos en cada dirección
 
-x_start, x_end = -2.0, 2.0 # límites en dirección x
-y_start, y_end = -2.0, 2.0 # límite en dirección y
+x_start, x_end = -20.0, 20.0 # límites en dirección x
+y_start, y_end = -10.0, 10.0 # límite en dirección y
 
 x = np.linspace(x_start, x_end, N) # crea arreglo de 1D con coord X
 y = np.linspace(y_start, y_end, N) # crea arreglo de 1D con coord Y
@@ -124,8 +124,8 @@ def superposicion(u_list, v_list, psi_list, new_inf, potencia, corriente, presio
   #Graficamos
   
   fig, ax = plt.subplots()
-  plt.xlim(-2, 2)
-  plt.ylim(-2, 2)
+  plt.xlim(-20, 20)
+  plt.ylim(-10, 10)
 
   if corriente:
     plt.streamplot(X, Y, u, v, density=1, linewidth=1, arrowsize=1, arrowstyle='->', color="brown") 
@@ -146,8 +146,8 @@ def superposicion(u_list, v_list, psi_list, new_inf, potencia, corriente, presio
 
   scats = []
 
-  xline = [random()*4 - 2 for _ in range(100)]
-  yline = [random()*4 - 2 for _ in range(100)]
+  xline = [random()*40 - 20 for _ in range(100)]
+  yline = [random()*20 - 10 for _ in range(100)]
 
   # animation function.  This is called sequentially
   def animate(i):
@@ -158,19 +158,19 @@ def superposicion(u_list, v_list, psi_list, new_inf, potencia, corriente, presio
       delx = []
       dely = []
       for i in range(len(xline)):
-        if not 0 <= round((xline[i] + 2) * 15) < 59 or not 0 <= round((yline[i] + 2) * 15) < 59:
+        if not 0 <= round((xline[i] + 20) * 1.5) < 59 or not 0 <= round((yline[i] + 10) * 3) < 59:
           delx.append(xline[i])
           dely.append(yline[i])
         else:
-          x_index_in_velocity = int((xline[i] + 2) * 15)
-          y_index_in_velocity = int((yline[i] + 2) * 15)
+          x_index_in_velocity = int((xline[i] + 20) * 1.5)
+          y_index_in_velocity = int((yline[i] + 10) * 3)
 
 
           vel_x = u[y_index_in_velocity][x_index_in_velocity]
           vel_y = v[y_index_in_velocity][x_index_in_velocity]
 
-          xline[i] += vel_x/30
-          yline[i] += vel_y/30
+          xline[i] += vel_x/10
+          yline[i] += vel_y/10
 
       if puntos:
         scat = plt.scatter([x for x in xline if not x in delx], [y for y in yline if not y in dely], color="orange", s=8)
