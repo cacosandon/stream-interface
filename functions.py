@@ -82,7 +82,7 @@ def velocity_SourceSink(M, xs, ys):
   return (M  * (X-xs) / ((X-xs)**2 + (Y-ys)**2), M * (Y-ys) / ((X-xs)**2 + (Y-ys)**2))
 
 def vel_inf_SS(M, xs, ys):
-  return sqrt((M  * (100-xs) / ((100-xs)**2 + (100-ys)**2))**2 + (M * (100-ys) / ((100-xs)**2 + (100-ys)**2))**2)
+  return sqrt((M  * (1000-xs) / ((1000-xs)**2 + (1000-ys)**2))**2 + (M * (1000-ys) / ((1000-xs)**2 + (1000-ys)**2))**2)
 
 def pressure_SourceSink(M, xs, ys, inf):
     u, v = velocity_SourceSink(M, xs, ys)
@@ -101,7 +101,7 @@ def velocity_Vortex(gamma, xv, yv):
   return (2*gamma * (Y-yv) / ((X-xv)**2 + (Y-yv)**2), -2*gamma * (X-xv) / ((X-xv)**2 + (Y-yv)**2))
 
 def vel_inf_V(gamma, xv, yv):
-  return sqrt((2*gamma * (100-yv) / ((100-xv)**2 + (100-yv)**2))**2 +  (-2*gamma * (100-xv) / ((100-xv)**2 + (100-yv)**2))**2)
+  return sqrt((2*gamma * (1000-yv) / ((1000-xv)**2 + (1000-yv)**2))**2 +  (-2*gamma * (1000-xv) / ((1000-xv)**2 + (1000-yv)**2))**2)
 
 def pressure_Vortex(gamma, xv, yv, inf): # REVISAR REVISAR REVISAR
     u, v = velocity_Vortex(gamma, xv, yv)
@@ -139,10 +139,10 @@ def superposicion(u_list, v_list, psi_list, new_inf, potencia, corriente, presio
     rho = 1
     cp = (U**2/(2*g) - V**2/(2*g)) * (rho * g)
 
-    contf = plt.contourf(X, Y, cp, levels=np.linspace(-2.0, 2.0, 100), extend='both')
+    contf = plt.contourf(X, Y, cp, levels=np.linspace(-2.0, 1.0, 100), extend='both')
     cbar = plt.colorbar(contf)
     cbar.set_label('Presión', fontsize=16)
-    cbar.set_ticks([-2.0, -1.0, 0.0, 1.0, 2.0])
+    cbar.set_ticks([-2.0, -1.0, 0.0, 1.0])
 
   scats = []
 
